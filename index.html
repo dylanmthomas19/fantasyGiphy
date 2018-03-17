@@ -2,81 +2,58 @@
 <html lang="en">
 
 <head>
-  <meta charset="utf-8">
-  <title>Quoth the Giphy</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous"></script>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+        crossorigin="anonymous">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+        crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="assets/css/style.css">
+
+    <script src="assets/javascript/app.js"></script>
+
+    <title>Fantasy Gifs by dmThomas19</title>
 </head>
 
 <body>
-  <div id="buttons">
-    <button data-person="arnold schwarzenegger">
-      I'll be back
-    </button>
-    <button data-person="michael j fox">
-      My happiness grows in direct proportion to my acceptance,
-      and in inverse proportion to my expectations.
-    </button>
+    <div class="container">
+        <div class="row buttons-row"></div>
+        <div class="row">
+            <div class="col-md-8 buttonPort"></div>
+            <div class="col-md-4">
+                <input id="userSearch" type="text" placeholder="Find Fantasy Gifs" name="search">
+                <button id="submit" type="submit">Submit</button>
+                <div class="row">
+                    <div class="panel col-md-6">
+                        <span>Number of Gifs:</span>
+                        <!-- Single button -->
+                        <span class="dropdown">
+                            <button id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span id="gifsNum" data-Num="5">5</span>
+                                <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu" aria-labelledby="dLabel">
+                                <li value="1">1</li>
+                                <li value="5">5</li>
+                                <li value="10">10</li>
+                            </ul>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row gifPort">
 
-    <!-- STEP ONE: Open this file in the browser and click on the buttons. Watch what happens -->
-
-    <!-- STEP TWO: between the dashed lines below
-            * add three more buttons
-            * add a data-person attribute of famous people you know
-            * with a quote said by them -->
-
-    <!-- **************************************** -->
-
-    <button data-person="Anton Yelchin">From time to time, i do consider myself to be mad...</button>
-
-    <button data-person="Escape the fate">This war is ours (guillotine 3)</button>
-
-    <button data-person="Keanu Reeves">Grief changes shape, but it never ends.</button>
-
-    <!-- **************************************** -->
-
-
-    <!-- STEP THREE: open this file in the browser and click on your buttons. If they don't work, then fix your buttons -->
-
-    <!-- STEP FOUR: go over the JavaScript with your partners, and explain the lines of code to each other. -->
-
-  </div>
-
-  <div id="gifs-appear-here">
-  </div>
-
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script type="text/javascript">
-    $("button").on("click", function() {
-        //grabs the data person attr
-      var person = $(this).attr("data-person");
-      //turns the attr into a usable url
-      var queryURL = "https://api.giphy.com/v1/gifs/search?q=" +
-        person + "&api_key=dc6zaTOxFJmzC&limit=10";
-
-      $.ajax({
-        url: queryURL,
-        method: "GET"
-      })
-        .then(function(response) {
-          var results = response.data;
-
-          for (var i = 0; i < results.length; i++) {
-            var gifDiv = $("<div class='item'>");
-
-            var rating = results[i].rating;
-
-            var p = $("<p>").text("Rating: " + rating);
-
-            var personImage = $("<img>");
-            personImage.attr("src", results[i].images.fixed_height.url);
-
-            gifDiv.prepend(p);
-            gifDiv.prepend(personImage);
-
-            $("#gifs-appear-here").prepend(gifDiv);
-          }
-        });
-    });
-  </script>
+        </div>
+    </div>
 </body>
 
 </html>
