@@ -2,11 +2,11 @@ $(document).ready(function () {
 
     var gifName = "";
 
-    var fantasyGifs = ["dragons", "unicorns", "fairies", "ogres", "trolls", "mermaids", "misty forests", "magic"]
+    var fantasyGifs = ["dragons", "unicorns", "fairies", "ogres", "trolls", "mermaids", "misty forests", "magic"];
 
     $("li").click(function () {
-        $("#gifsNum").text($(this).val())
-        $("#gifsNum").attr("data-Num", $(this).val())
+        $("#gifsNum").text($(this).val());
+        $("#gifsNum").attr("data-Num", $(this).val());
     })
 
     // function addButton(a) {
@@ -18,35 +18,35 @@ $(document).ready(function () {
     // }
 
     $(fantasyGifs).each(function (a) {
-        gifName = fantasyGifs[a]
-        var gifButton = $("<button>")
-        gifButton.attr("id", "gifButton")
-        gifButton.attr("data-title", gifName)
-        gifButton.text(gifName)
-        $(".buttonPort").append(gifButton)
-        console.log($(gifButton).attr("data-title"))
-    })
+        gifName = fantasyGifs[a];
+        var gifButton = $("<button>");
+        gifButton.attr("id", "gifButton");
+        gifButton.attr("data-title", gifName);
+        gifButton.text(gifName);
+        $(".buttonPort").append(gifButton);
+        console.log($(gifButton).attr("data-title"));
+    });
 
     $("#submit").click(function () {
-        event.preventDefault()
-        gifName = $("#userSearch").val().trim()
-        var gifButton = $("<button>")
-        gifButton.attr("id", "gifButton")
-        gifButton.attr("data-title", gifName)
-        gifButton.text(gifName)
-        $(".buttonPort").append(gifButton)
-        console.log($(gifButton).attr("data-title"))
-    })
+        event.preventDefault();
+        gifName = $("#userSearch").val().trim();
+        var gifButton = $("<button>");
+        gifButton.attr("id", "gifButton");
+        gifButton.attr("data-title", gifName);
+        gifButton.text(gifName);
+        $(".buttonPort").append(gifButton);
+        console.log($(gifButton).attr("data-title"));
+    });
 
     $(document).on("click","#gifButton", function () {
-        var gifsNum = $("#gifsNum").attr("data-Num")
-        var gifSearch = $(this).attr("data-title")
+        var gifsNum = $("#gifsNum").attr("data-Num");
+        var gifSearch = $(this).attr("data-title");
 
-        var queryURL = "https://api.giphy.com/v1/gifs/search?q="
-        var apiKey = "&api_key=kZHKfMfjZtDToXo9HyGmenp8yENgycDO"
-        var gifsUrl = "&limit=" + gifsNum
+        var queryURL = "https://api.giphy.com/v1/gifs/search?q=";
+        var apiKey = "&api_key=kZHKfMfjZtDToXo9HyGmenp8yENgycDO";
+        var gifsUrl = "&limit=" + gifsNum;
 
-        queryURL = queryURL + gifSearch + apiKey + gifsUrl
+        queryURL = queryURL + gifSearch + apiKey + gifsUrl;
 
         console.log(queryURL)
         $.ajax({
@@ -56,8 +56,6 @@ $(document).ready(function () {
             .then(function (response) {
 
                 var results = response.data;
-
-                console.log(results)
 
                 for (var i = 0; i < results.length; i++) {
 
