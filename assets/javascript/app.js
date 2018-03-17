@@ -39,6 +39,7 @@ $(document).ready(function () {
     });
 
     $(document).on("click","#gifButton", function () {
+        $(".gifPort").text("")
         var gifsNum = $("#gifsNum").attr("data-Num");
         var gifSearch = $(this).attr("data-title");
 
